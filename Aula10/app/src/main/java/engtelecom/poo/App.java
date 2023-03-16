@@ -7,21 +7,18 @@ package engtelecom.poo;
 public class App {
 
     public static void main(String[] args) {
-        Tempo[] exemplos = new Tempo[3];
+        Tempo exemplo1 = new Tempo(5,15,30);
+        Tempo exemplo2 = new Tempo(6,5,10);
 
 
-        exemplos[0] = new Tempo(-5);
-        exemplos[1] = new Tempo(5,15);
-        exemplos[2] = new Tempo(5,15,30);
+        long a = exemplo1.convertePraSegundos();
+        long b = exemplo2.convertePraSegundos();
+        System.out.println("A conversão em segundos do exemplo 1 é: " + a);
+        System.out.println("A conversão em segundos do exemplo 2 é: " + b);
+        
+        long dif = exemplo1.diferenca(exemplo1, exemplo2);
 
-        long a = exemplos[2].convertePraSegundos();
-        System.out.println("A conversão em segundos é: " + a);
-
-
-        for (Tempo tempo : exemplos) {
-            System.out.println(tempo);
-        }
-
+        System.out.println("A diferença entre A e B é: " + dif);
 
 
 

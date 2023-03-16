@@ -65,13 +65,11 @@ public class Tempo {
         return segundos;
     }
 
-    // retorna diferença em segundos de um pro outro
     public long diferenca(Tempo a, Tempo b){
-        long aConvertido=0;
-
-
-        return aConvertido;
-
+        long aConvertido,bConvertido;
+        aConvertido = a.convertePraSegundos();
+        bConvertido = b.convertePraSegundos();
+        return aConvertido - bConvertido;
     }
 
 
