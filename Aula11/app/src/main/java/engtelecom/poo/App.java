@@ -8,7 +8,7 @@ public class App {
 
 
     public static void main(String[] args) throws Exception {
-         Barra a = new Barra(20, WHITE, '.', RED, '$', true);
+         Barra a = new Barra(20, WHITE, '.', RED, '#', true);
          a.iniciar();
 
 

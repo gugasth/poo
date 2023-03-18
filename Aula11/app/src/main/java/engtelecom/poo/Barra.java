@@ -67,11 +67,11 @@ public class Barra {
             System.out.print(ansi().reset().cursor(1,i).fg(this.corProgresso).a(this.charProgresso));
             Thread.sleep(100);
             if (mostraPorcentagem == true){
-                int tamanho = tamanhoBarra - i;
+                int tamanho = this.tamanhoBarra - i;
                 for (int j=0; j<tamanho; j++){
                 System.out.print(" ");
                 }
-                System.out.print(i + "/" + tamanhoBarra);
+                System.out.print(i * 100 / this.tamanhoBarra + "/" + 100);
             }
         }
 
