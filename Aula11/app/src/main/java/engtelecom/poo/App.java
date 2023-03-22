@@ -9,7 +9,7 @@ public class App {
 
     public static void main(String[] args) throws Exception {
          Barra a = new Barra(20, WHITE, '.', RED, '#', true);
-         a.iniciar();
+         a.iniciar("arquivo.txt", 100);
 
 
         // Exemplo do professor

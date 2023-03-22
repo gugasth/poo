@@ -78,8 +78,35 @@ public class Barra {
         System.out.println();
         AnsiConsole.systemUninstall();
 }
+    
 
-    }
+
+    public void iniciar(String nomeArquivo, int tamanhoArquivo) throws Exception{
+        System.out.print(nomeArquivo + ": ");
+        AnsiConsole.systemInstall();
+        System.out.print(ansi().cursor(1,1));
+        System.out.print(nomeArquivo + ": ");
+
+        for (int i=1; i<tamanhoBarra+1; i++){
+            System.out.print(ansi().fg(this.corDimensao).a(this.charDimensao));
+        }
+
+        for (int i=0; i<this.tamanhoBarra+1; i++){
+            System.out.print(ansi().cursor(1,i).fg(this.corProgresso).a(this.charProgresso));
+            Thread.sleep(100);
+            if (mostraPorcentagem == true){
+                int tamanho = this.tamanhoBarra - i;
+                for (int j=0; j<tamanho; j++){
+                System.out.print(" ");
+                }
+                System.out.print(i * 100 / this.tamanhoBarra + "/" + 100);
+            }
+        }
+
+        System.out.println();
+        AnsiConsole.systemUninstall();
+}
+}
 
 
 
