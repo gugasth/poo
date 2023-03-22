@@ -9,8 +9,8 @@ public class App {
 
     public static void main(String[] args) throws Exception {
          Barra a = new Barra(20, WHITE, '.', RED, '#');
-         boolean x = false;
-         a.iniciar(x);
+         boolean porcentagem = true;
+         a.iniciar( "teste.txt",  50, porcentagem);
 
 
         // Exemplo do professor

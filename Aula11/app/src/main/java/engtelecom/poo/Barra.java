@@ -42,6 +42,7 @@ public class Barra {
      */
     public void iniciar(boolean porcentagem) throws Exception{
         AnsiConsole.systemInstall();
+        // Preenche a dimensão
         System.out.print(ansi().reset().eraseScreen().cursor(1,1));
         for (int i=1; i<tamanhoBarra+1; i++){
             System.out.print(ansi().fg(this.corDimensao).a(this.charDimensao));
@@ -53,13 +54,13 @@ public class Barra {
             if (porcentagem == true){
                 int tamanho = this.tamanhoBarra - i;
                 for (int j=0; j<tamanho; j++){
-                System.out.print(" ");
+                    System.out.print(" ");
                 }
                 // se o usuário deseja a porcentagem, então:
-                if (porcentagem == true){
-                    // mostra com porcentagem
+                
+                // mostra com porcentagem
                 System.out.print(i * 100 / this.tamanhoBarra + "/" + 100);
-                } 
+                
             }
         }
         System.out.println();
@@ -67,32 +68,53 @@ public class Barra {
 }
     
 
+/**
+ * Método iniciar que mostra o nome do arquivo e usa seu tamanho na iteração.
+ * @param tamanhoArquivo
+ * @param nomeArquivo
+ * @param porcentagem
+ * @throws Exception
+ */
+public void iniciar(String nomeArquivo, int tamanhoArquivo, boolean porcentagem) throws Exception{
 
-    public void iniciar(String nomeArquivo, int tamanhoArquivo, boolean porcentagem) throws Exception{
-        System.out.print(nomeArquivo + ": ");
-        AnsiConsole.systemInstall();
-        System.out.print(ansi().cursor(1,1));
-        System.out.print(nomeArquivo + ": ");
 
-        for (int i=1; i<tamanhoBarra+1; i++){
-            System.out.print(ansi().fg(this.corDimensao).a(this.charDimensao));
-        }
+    
+    AnsiConsole.systemInstall();
+ 
+    
 
-        for (int i=0; i<this.tamanhoBarra+1; i++){
-            System.out.print(ansi().cursor(1,i).fg(this.corProgresso).a(this.charProgresso));
-            Thread.sleep(100);
-            if (porcentagem == true){
-                int tamanho = this.tamanhoBarra - i;
-                for (int j=0; j<tamanho; j++){
+
+    // Preenche a dimensão
+
+    System.out.print(ansi().fg(RED).a(nomeArquivo + ": "));
+    System.out.print(ansi().eraseScreen().cursor(1,1));
+    
+
+    for (int i=1; i<tamanhoBarra+1; i++){
+        System.out.print(ansi().fg(this.corDimensao).a(this.charDimensao));
+    }
+
+    for (int i=0; i<this.tamanhoBarra+1; i++){
+        System.out.print(ansi().cursor(1,i).fg(this.corProgresso).a(this.charProgresso));
+        Thread.sleep(100);
+
+
+        if (porcentagem == true){
+            int tamanho = this.tamanhoBarra - i;
+            for (int j=0; j<tamanho; j++){
                 System.out.print(" ");
-                }
-                System.out.print(i * 100 / this.tamanhoBarra + "/" + 100);
             }
+            // se o usuário deseja a porcentagem, então:
+            
+            // mostra com porcentagem
+            System.out.print(i * 100 / this.tamanhoBarra + "/" + 100);
+            
         }
-
-        System.out.println();
-        AnsiConsole.systemUninstall();
+    }
+    System.out.println();
+    AnsiConsole.systemUninstall();
 }
+
 }
 
 
