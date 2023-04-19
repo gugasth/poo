@@ -8,7 +8,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 import engtelecom.agenda.Agenda;
+import engtelecom.agenda.Email;
 import engtelecom.agenda.Pessoa;
+import engtelecom.agenda.Telefone;
 
 public class App {
     Agenda agenda = new Agenda();
@@ -23,7 +25,8 @@ public class App {
             System.out.println("..:: Agenda de contatos ::..");
             System.out.println("1 - Cadastrar contato");
             System.out.println("2 - Listar todos os contatos");
-            System.out.println("3 - Sair do programa");
+            System.out.println("3 - Adicionar informação");
+            System.out.println("4 - Sair do programa");
         
             System.out.print("Entre com a opção desejada: ");
             opcao = teclado.nextInt();
@@ -35,6 +38,8 @@ public class App {
                 this.listarTodosContatos();
                 break;
             case 3:
+                this.adicionarInformacao();
+            case 4:
                 System.out.println("Tchau");
                 break;
             default:
@@ -44,6 +49,9 @@ public class App {
     }
 }
 
+    /**
+     * Método de menu interativo que cadastra o contato
+     */
     private void cadastrarContato(){
 
         System.out.println("..::Cadastrar contato..::");
@@ -59,21 +67,78 @@ public class App {
 
         Pessoa p = new Pessoa(nome, sobrenome, data);
         agenda.adicionar(p);
-    }
 
+        // Verifica se quer adicionar email
+        System.out.println("Deseja adicionar um email? (s/n)");
+        String opcao = teclado.nextLine();
+        if (opcao.equals("s")){
+            System.out.println("Endereço de email: ");
+            String v = teclado.next();
+            teclado.nextLine();
+            System.out.println("Digite um rótulo: ");
+            String r = teclado.next();
+            teclado.nextLine();
+
+
+            Email e = new Email(r,v);
+            if (e.isValido()){
+                p.adicionaEmail(r,v);
+            } else {
+                System.out.println("Email inválido");
+            }
+        } else {
+            // Verifica se quer adicionar telefone
+            System.out.println("Deseja adicionar um telefone? (s/n)");
+            teclado.next();
+            teclado.nextLine();
+            if (teclado.equals("s")){
+                System.out.println("Digite um rótulo: ");
+                String r = teclado.nextLine();
+                System.out.println("Digite um número: ");
+                String v = teclado.nextLine();
+                p.adicionaTelefone(r,v);
+            } 
+        }
+    }    
+
+    /**
+     * Método que lista todos os contatos da agenda
+     */
     private void listarTodosContatos(){
         System.out.println("..:: Contatos ::..");
         agenda.listaDeContatos();
         
     }
 
+    /**
+     * Método que adiciona informação de email ou telefone ao contato
+     */
+    private void adicionarInformacao(){
+        // Pessoa informa o nome
+        System.out.println("Qual o seu nome?");
+        String nome = teclado.nextLine();
+        Pessoa p = agenda.getContato(nome);
+
+        // Pergunta se quer adicionar email ou telefone
+        System.out.println("O que você deseja adicionar? ");
+        System.out.println("1 - Email");
+        System.out.println("2 - Telefone");
+        int opcao = teclado.nextInt();
+        teclado.nextLine();
+        if (opcao == 1){
+            // adiciona email
+            // TODO
+        } else if (opcao == 2){
+            // adiciona telefone
+            // TODO
+        } else {
+            System.out.println("Insira uma opção válida");
+        }
+    }
+
 
     public static void main(String[] args) {
-
         App app = new App();
         app.menu();
-
-
     }
 }
-

@@ -46,5 +46,9 @@ public class Pessoa {
         Telefone t = new Telefone(rotulo, valor);
         telefones.add(t);
     }
+
+    public String getNome() {
+        return nome;
+    }
     
 }

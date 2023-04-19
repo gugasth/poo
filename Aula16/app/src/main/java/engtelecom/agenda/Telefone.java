@@ -9,7 +9,7 @@ public class Telefone {
      * Método toString: concatena o valor e o rótulo do telefone e imprime isso
      */
     public String toString(){
-        return this.valor + this.rotulo;
+        return "(" + this.rotulo + ")" + this.valor;
     }
 
     /**
@@ -20,5 +20,9 @@ public class Telefone {
     public Telefone(String rotulo, String valor) {
         this.rotulo = rotulo;
         this.valor = valor;
+    }
+
+    public boolean isValido(){
+        return false;
     }
 }
