@@ -26,7 +26,8 @@ public class App {
             System.out.println("1 - Cadastrar contato");
             System.out.println("2 - Listar todos os contatos");
             System.out.println("3 - Adicionar informação");
-            System.out.println("4 - Sair do programa");
+            System.out.println("4 - Excluir contato");
+            System.out.println("5 - Sair do programa");
         
             System.out.print("Entre com a opção desejada: ");
             opcao = teclado.nextInt();
@@ -35,11 +36,14 @@ public class App {
                 this.cadastrarContato();
                 break;
             case 2:
-                this.listarTodosContatos();
+                String lista = agenda.listaDeContatos("");
+                System.out.println(lista);
                 break;
             case 3:
                 this.adicionarInformacao();
             case 4:
+                this.excluirContato();
+            case 5:
                 System.out.println("Tchau");
                 break;
             default:
@@ -101,14 +105,6 @@ public class App {
         }
     }    
 
-    /**
-     * Método que lista todos os contatos da agenda
-     */
-    private void listarTodosContatos(){
-        System.out.println("..:: Contatos ::..");
-        agenda.listaDeContatos();
-        
-    }
 
     /**
      * Método que adiciona informação de email ou telefone ao contato
@@ -117,7 +113,7 @@ public class App {
         // Pessoa informa o nome
         System.out.println("Qual o seu nome?");
         String nome = teclado.nextLine();
-        Pessoa p = agenda.getContato(nome);
+        //TODO
 
         // Pergunta se quer adicionar email ou telefone
         System.out.println("O que você deseja adicionar? ");
@@ -135,6 +131,22 @@ public class App {
             System.out.println("Insira uma opção válida");
         }
     }
+
+    /**
+     * Método para excluir um contato
+     * exibe a lista de contatos da agenda
+     * e pergunta qual contato o usuário deseja excluir,
+     * então exclui o contato solicitado.
+     */
+    private void excluirContato(){
+        String listaContatos = agenda.listaDeContatos("");
+        System.out.println(listaContatos);
+        System.out.println("Qual contato você deseja excluir? ");
+        int op = teclado.nextInt();
+        agenda.removePessoa(op);
+        }
+
+    
 
 
     public static void main(String[] args) {

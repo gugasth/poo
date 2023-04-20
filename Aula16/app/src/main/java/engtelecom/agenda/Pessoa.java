@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import javax.xml.crypto.Data;
 
 public class Pessoa {
+    private int codigo = 0;
     private String nome;
     private String sobrenome;
     private LocalDate DataNascimento;
@@ -21,9 +22,25 @@ public class Pessoa {
         this.DataNascimento = dataNascimento;
     }
 
+    
+
+    /**
+     * Método que gera o código para a pessoa
+     * @param codigo a ser criado
+     */
+    public void geraCodigo(int codigo) {
+        this.codigo = codigo + 1;
+    }
+
+
+
     public String toString(){
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/YYYY");
-        return this.nome + " " + this.sobrenome + "\n" + DataNascimento.format(formato);
+        return this.codigo + " - " + this.nome + " " + this.sobrenome + " " + DataNascimento.format(formato) + "\n";
+    }
+
+    public int getCodigo() {
+        return codigo;
     }
 
     /**
