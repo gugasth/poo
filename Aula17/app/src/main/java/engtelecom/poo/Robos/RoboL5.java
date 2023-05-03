@@ -40,5 +40,17 @@ public class RoboL5 extends RoboL3{
         return 0;
     }
 
-    
+
+    @Override
+    public boolean equals(Object obj) {
+        if( super.equals(obj)){
+            RoboL5 r = (RoboL5)obj;
+
+            if (this.z == r.z){
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

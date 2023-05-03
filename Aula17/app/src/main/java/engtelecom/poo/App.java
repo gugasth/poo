@@ -8,28 +8,22 @@ import engtelecom.poo.Robos.RoboL5;
 
 public class App {
     public static void main(String[] args) {
-        RoboL3 r1 = new RoboL3("Robozão", 0, 0, 'N', 15);
-
-        r1.deslocaUnidades(2);
-        r1.giraRobo('D');
-        r1.deslocaUnidades(2);
-        System.out.println("O robô 1 está em");
-        System.out.println(r1);
-        
-        RoboL5 r2 = new RoboL5("Robozão v2", 0, 0, 0, 'N', 0);
-        r2.deslocaUnidades(2);
-        System.out.println("O robô 2 está em: ");
-        System.out.println(r2);
+        // Variáveis genéricas guardam variáveis específicas
 
 
-        RoboL3 r3 = new RoboL5("robo", 0, 0, 0, 'S', 0);
-        System.out.println("O robô 3 está em: ");
-        System.out.println(r3);
-        
+        // Criando duas classes iguais com os mesmos atributos
+        RoboL5 a = new RoboL5(null, 1, 2, 3, 'N', 10);
+        RoboL5 b = new RoboL5(null, 1, 2, 3, 'N', 10);
 
-        Object b = new RoboL3("a", 0, 0, 'S', 0)r;
-        ((RoboL3)b).deslocaUnidades(2);
-        RoboL3 z = (RoboL3)b;
+        // *****************************************************************************
+        // Sempre usar equals pra comparar classes! erro conceitual ao comparar com '=='
+        // *****************************************************************************
+        if (a.equals(b)){
+            System.out.println("iguais");
+        } else {
+            System.out.println("diferentes");
+        }
+
 
         
     }

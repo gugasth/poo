@@ -191,13 +191,52 @@ public class RoboL3 {
         return this.bateria;
     }
 
+    /**
+     * Método getter que retorna a coordenada x
+     * @return a coordenada x
+     */
     public int getX() {
         return x;
     }
 
+    /**
+     * Método getter que retorna a coordenada y
+     * @return a coordenada y
+     */
     public int getY() {
         return y;
     }
 
-    
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        RoboL3 other = (RoboL3) obj;
+        if (nome == null) {
+            if (other.nome != null)
+                return false;
+        } else if (!nome.equals(other.nome))
+            return false;
+        if (x != other.x)
+            return false;
+        if (y != other.y)
+            return false;
+        if (direcao != other.direcao)
+            return false;
+        if (bateria != other.bateria)
+            return false;
+        if (ORIGEM != other.ORIGEM)
+            return false;
+        if (BATERIAMIN != other.BATERIAMIN)
+            return false;
+        if (BATERIAMAX != other.BATERIAMAX)
+            return false;
+        if (BATERIADEFAULT != other.BATERIADEFAULT)
+            return false;
+        return true;
+    }
 }
